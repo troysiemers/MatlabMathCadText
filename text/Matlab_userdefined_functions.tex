@@ -1,0 +1,156 @@
+
+In this section, we discuss how to create new functions in Matlab.
+
+\section{Matlab: User-Defined Functions}\label{sec:Matlab_userdefined_functions}
+
+Up to now, the M-files that you have created are called ``script'' files.  Now we use the editor to create \textbf{function} M-files.  Why would you want to do this?  Well, Matlab has many built-in functions, but you may need to create your own to solve a specialized problem.
+
+Let’s look at how a function is put together. In the command window, if you were to type\\
+\\
+\cour{>> help \color{myred} sin}\\
+\\
+you would get\\
+\\
+\cour{SIN    Sine of argument in radians.}\\
+\cour{SIN(X) is the sine of the elements of X.}\\
+ 
+\cour{See also {\color{blue} \underline{asin}, \underline{sind}}}\\
+
+\cour{Reference page in Help browser}\\
+\cour{{\color{blue} \phantom{OOOOO} \underline{doc sin}}}\\
+\\
+In reading this, you can see the purpose of the function, the correct usage of the function and references to additional related functions.  When you create your own functions, you will also need to create similar information.\\
+
+\index{Matlab Functions!\cour{function}}
+Here's how to create a function in Matlab.  In the Editor window, follow these steps:\\
+\\
+1) On the first line(s) put comments that describe the function and, most importantly, a usage statement or HOW THE USER ENTERS THE FUNCTION!!!\\
+2) On the next line, put the word \cour{\color{blue} function} followed by:       \\
+a) In \cour{[ ]}, put the variable(s) (separated by commas) for the function output(s). \\
+b) The = symbol\\
+c) Your function name\\ 
+d) In \cour{( )}, put the variable(s) (separated by commas) for the function input(s).\\
+3) On the following lines, put the calculations that define the output variables based on the input variables.\\
+
+Easy right??\\
+
+A couple of comments before we get to some examples.\\
+
+
+\keyidea{idea:functiontips}{\textbf{Function Tips}\\
+1) If you have exactly one output the brackets aren't needed (see step 2a)\\
+2) Functions must follow the same naming conventions as for variables (do a Google search)}
+
+Let's look at an example of a function that computes the area of a triangle.\\
+
+\example{ex_trianglefunction}{\textbf{Area of a triangle function}\\
+
+Here is the syntax that you would type into an editor window:\\
+\\
+\cour{{\color{mygreen} \%  Usage: Area=TriangleArea(base,height)}}\\
+\cour{{\color{mygreen} \%  Inputs:  base and height are scalars}}\\ 
+\cour{{\color{mygreen} \%  Output:  Area - area of a triangle}}\\
+\cour{{\color{blue} function} Area=TriangleArea(base,height)}\\
+\cour{Area = 0.5*base.*height;}\\
+
+Now save this file as \cour{TriangleArea.m}.  Your file name \underline{must} exactly match the name of the function (except for the .m part) or else the function will not run.
+
+In order to execute any function, you cannot use the Matlab run button.  You must run the function from the command window or another M-file since you need to provide the input(s).  First, check that you have provided enough comments about how to use the function:\\
+\\
+\cour{>> help \color{myred} TriangleArea}\\
+
+which will give your description of how to use the function. Now, run the function with:  \\
+\\
+\cour{>> A = TriangleArea(3,4)}\\
+\\
+\cour{A =} \\
+\cour{\ps 6}\\
+\vskip -\baselineskip
+}\\
+
+NOTE:  In the program \cour{TriangleArea.m} the variables \cour{Area, base} and \cour{height} are called \underline{local} variables.  That means they are only used in this specific program.  They don't appear outside the function (or in the Workspace).\\
+
+\example{ex_rectfunction}{\textbf{Rectangle function}\\
+
+Here is the syntax that you would type into an editor window:\\
+\\
+\cour{{\color{mygreen} \%  Usage: [Area,Perimeter]=Rectangle(base,height) }}\\
+\cour{{\color{mygreen} \%  Inputs:  base and height are vectors of the same length }}\\
+\cour{{\color{mygreen} \%  Outputs: }}\\
+\cour{{\color{mygreen} \%  Area -  area of a rectangle}}\\
+\cour{{\color{mygreen} \%  Perimeter – perimeter of a rectangle}}\\
+\cour{{\color{blue} function} [Area,Perimeter]=Rectangle(base,height)}\\
+\cour{Area = base.*height;}\\
+\cour{Perimeter = 2*(base+height);}\\
+
+Now save this file as \cour{Rectangle.m}
+ 
+Again, make sure the usage comments are correct:\\   
+\\
+\cour{>> help \color{myred} Rectangle}\\
+\\
+to see your helpful comments.  Now run the function: \\
+\\
+\cour{>> [A,P] = Rectangle(3,4)}\\
+\\
+\cour{A =}\\
+\cour{\ps 12}\\
+\cour{P =}\\
+\cour{\ps 14}\\
+
+Here again we are reminded of the fact that \cour{Area} and \cour{Perimeter} are local to the function, so when we run the function, we can call the outputs by different names.  When we run the function we use the shorter \cour{A} and \cour{P} to store the areas and perimeters.\\
+
+What happens if you try to run the function without output variables? Try\\
+\\
+\cour{>> Rectangle(3,4)}\\
+\\
+\cour{ans =} \\
+\cour{\ps 12}\\
+
+You only get the value that would have been assigned to the first output variable (here it's the area).
+Since the calculations are just as they would be for matrices, we can try:\\
+\\
+\cour{>> base = 1:4; height = [3 6 10 12];}\\ 
+\\
+and run the function:\\ 
+\\
+\cour{>> [A,P] = Rectangle(base,height)}\\
+\\
+\cour{A =}\\
+\cour{\ps 3    12    30    48}\\
+\cour{P =}\\
+\cour{\ps 8    16    26    32}\\
+\\
+which gives us the areas and perimeters of the rectangles of the corresponding bases and heights.
+}\\
+
+\index{Matlab Functions!\cour{nargin}}
+\index{Matlab Functions!\cour{nargout}}
+\index{Matlab Functions!\cour{type}}
+Here are a few commands of interest:\\
+\begin{align*}
+&\cour{nargin({\color{myred} \textquotesingle TriangleArea\textquotesingle})} & \text{(number of inputs)}\\
+&\cour{nargout({\color{myred} \textquotesingle TriangleArea\textquotesingle})} & \text{(number of outputs)}\\
+&\cour{nargin({\color{myred} \textquotesingle mesh\textquotesingle})} & \text{(variable number of inputs)}\\
+&\cour{type({\color{myred} \textquotesingle TriangleArea\textquotesingle})} & \text{(returns code of M file)}\\
+\end{align*}
+
+One more example:\\
+\\
+\cour{type({\color{myred} \textquotesingle sin\textquotesingle})}\\
+\\
+gives an output of \cour{`sin' is a built-in function}, which indicates that this last one is a built-in function whose code is not accessible.
+
+
+
+
+
+\newpage
+\printexercises{exercises/05_exercises}
+
+
+%\definition{def:lineintegral}{\textbf{TITLE}}
+%
+%\keyidea{idea:lineintprops}{\textbf{TITLE}}
+%
+%\printexercises{exercises/mathcad_introduction_exercises}

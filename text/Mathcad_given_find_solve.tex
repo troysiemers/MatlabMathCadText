@@ -1,0 +1,175 @@
+Here we investigate using ``given/find'' and ``solve'' blocks for solving equations or systems of equations.
+
+
+\section{Mathcad: Given/Find Blocks}\label{sec:Mathcadgivenfind}
+
+\index{Mathcad Functions!\tnr{given$\backslash$find} block}
+\noindent \large \textsf{\textbf{given/find block}} \normalsize\\
+
+We illustrate this through the following example.\\
+
+\example{exgivenfind1}{{\bf  Solve $2 = x^4+3x^2-1$.}\\
+
+In the worksheet, the syntax is \\
+\\
+\tnr{given}\\
+\tnr{2 $\boldeq$ x$^4$ + 3x$^2$ - 1}  \ps   	(Use ctrl + = for bold symbolic equals sign)\\
+\tnr{guess}\\
+\tnr{x := 1}	\\
+\tnr{x := find(x)}  \\
+\tnr{x =}	\ps \\
+\\
+The last line will show \tnr{x = 0.89} once the equals sign is entered.  The line \tnr{x := find(x)} solves for \tnr{x} and then stores it back as the variable \tnr{x}.  For full details, the guess of \tnr{x := 1} provides the ``seed'' for the Newton-Raphson algorithm (Google it).   Try changing the seed value to see what happens.  For example, if we start with \tnr{x := $-$1} we end up with a different answer, namely \tnr{x = $-$0.89}.
+}\\
+
+The given/find process can be extended to solving systems of equations as well as in the next example:\\
+
+\example{ex_givenfind2}{{\bf Simultaneously solve $a + b = 3, a - b = 4$ for $a,b$.}\\
+
+In the worksheet, using ctrl + = for bold symbolic equals sign, the syntax is\\
+\\
+\tnr{given}\\
+\tnr{a+b $\boldeq$ 3}\\
+\tnr{a-b $\boldeq$ 4}\\
+\tnr{guess}\\
+\tnr{a := 1}	\\
+\tnr{b := 1}	\\
+\tnr{find(a,b)=}  \\
+\\
+Once, you hit return on the last line, it will become\\
+\\
+\tnr{find(a,b)=}
+$
+\left(
+\begin{array}{c}
+3.5\\
+-0.5
+\end{array}
+\right)
+$\\
+\\
+So, the solution is $a=3.5, b=-0.5$.}\\
+
+The given/find capabilities are not limited to linear equations as can be seen in the next example.\\
+
+\example{ex_givenfind3}{ {\bf Simultaneously solve $t^4+r^3 = 1$ and $r - t^2 = -2$}
+\\
+
+In the worksheet, using ctrl + = for bold symbolic equals sign, the syntax is\\
+\\
+\tnr{given}\\
+\tnr{t$^4$ + r$^3$ $\boldeq$ 1}\\
+\tnr{r $-$ t$^2$ $\boldeq$ $-$2}\\
+\tnr{guess}\\
+\tnr{r := 1}	\\
+\tnr{t := 1}	\\
+\tnr{find(r,t)=}  \\
+\\
+Once, you hit return on the last line, it will become\\
+\\
+\tnr{find(r,t)=}
+$
+\left(
+\begin{array}{c}
+-0.783\\
+1.103
+\end{array}
+\right)
+$\\
+\\
+So, one solution is $r=-0.783, t=1.103$.  Note that this is not the only solution.  Can you change the seed (or ``guess'') values to get the rest of the solutions? 
+}
+
+\section{Mathcad: Solve Blocks}\label{sec:Mathcadsolve}
+
+\index{Mathcad Functions!\tnr{solve} block}
+\noindent \large \textsf{\textbf{solve block}} \normalsize\\  
+
+To use the solve block, first open the symbolic toolbar.  We show how to solve the example \ref{exgivenfind1} with this new technique.\\
+
+\example{ex_solveblock1}{ {\bf Solve $2 = x^4+3x^2-1$.}\\
+
+In the worksheet, using ctrl + = for the bold symbolic equals sign and clicking on the word ``solve'' in the symbolic toolbar, the syntax is\\
+\\
+\tnr{2 $\boldeq$ x$^4$ + 3x$^2$ - 1 solve, x} $\rightarrow$\\
+\\
+Once you hit return, it will look like:\\
+\\
+\tnr{2 $\boldeq$ x$^4$ + 3x$^2$ - 1 solve, x} $\rightarrow$
+$
+\left(
+\begin{array}{c}
+\displaystyle -\sqrt{-\frac{1}{2}\sqrt{21}-\frac{3}{2}}\\
+\displaystyle \sqrt{-\frac{\sqrt{21}}{2}-\frac{3}{2}}\\
+\displaystyle -\sqrt{-\frac{1}{2}\sqrt{21}-\frac{3}{2}}\\
+\displaystyle \sqrt{\frac{\sqrt{21}}{2}-\frac{3}{2}}\\
+\end{array}
+\right)
+$
+
+If you type an equals sign on the end of the last line, it will become:\\
+\\
+\tnr{2 $\boldeq$ x$^4$ + 3x$^2$ - 1 solve, x} $\rightarrow$
+$
+\left(
+\begin{array}{c}
+\displaystyle -\sqrt{-\frac{1}{2}\sqrt{21}-\frac{3}{2}}\\
+\displaystyle \sqrt{-\frac{\sqrt{21}}{2}-\frac{3}{2}}\\
+\displaystyle -\sqrt{-\frac{1}{2}\sqrt{21}-\frac{3}{2}}\\
+\displaystyle \sqrt{\frac{\sqrt{21}}{2}-\frac{3}{2}}\\
+\end{array}
+\right)
+=
+\left(
+\begin{array}{c}
+-1.947i\\
+1.947i\\
+-0.89\\
+0.89
+\end{array}
+\right)$
+\\
+Note that two of these solutions are not real valued.  Also, it is proper syntax to leave off the ``, x'' after the word solve as Mathcad will solve for the only variable present by default.  That is, \\ 
+\\
+\tnr{2 $\boldeq$ x$^4$ + 3x$^2$ - 1 solve} $\rightarrow$\\
+\\
+will still give the same solution.
+}\\
+
+The solve block can be extended to equations with multiple variables as seen in the next example.
+
+\example{ex_solveblock2}{{\bf Solve $1 = \displaystyle\frac{x^2 y}{x^2 + y^2}$ for each variable}\\
+\\
+Using the bold equals and the word ``solve'' from the symbolic toolbar, the syntax is:\\
+\\
+\tnr{1 $\boldeq$ $\displaystyle \frac{\tnr{x}^2 \tnr{y}}{\tnr{x}^2 + \tnr{y}^2}$ solve, x} $\rightarrow$\\
+\\
+Once you hit return, it will look like:\\
+\tnr{1 $\boldeq$ $\displaystyle \frac{\tnr{x}^2 \tnr{y}}{\tnr{x}^2 + \tnr{y}^2}$ solve, x} 
+$\rightarrow 
+\left(
+\begin{array}{c}
+\displaystyle -\frac{\tnr{y}}{\sqrt{\tnr{y}-1}}\\
+\\
+\displaystyle \frac{\tnr{y}}{\sqrt{\tnr{y}-1}}
+\end{array}
+\right)$\\
+\\
+and\\
+\\
+\tnr{1 $\boldeq$ $\displaystyle \frac{\tnr{x}^2 \tnr{y}}{\tnr{x}^2 + \tnr{y}^2}$ solve, y} $\rightarrow$\\
+\\
+Once you hit return, it will look like:\\
+\tnr{1 $\boldeq$ $\displaystyle \frac{\tnr{x}^2 \tnr{y}}{\tnr{x}^2 + \tnr{y}^2}$ solve, y} 
+$\rightarrow 
+\left(
+\begin{array}{c}
+\displaystyle \frac{\tnr{x}(\tnr{x}+\sqrt{\tnr{x}^2-4})}{2}\\
+\displaystyle \frac{\tnr{x}^2}{2} - \frac{\tnr{x}\sqrt{\tnr{x}^2-4}}{2}
+\end{array}
+\right)$\\
+\po
+}
+
+\newpage
+\printexercises{exercises/12_exercises}
