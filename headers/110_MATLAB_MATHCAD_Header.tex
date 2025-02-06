@@ -1,0 +1,116 @@
+\documentclass[10pt,openany]{book}
+
+%%
+% Package declarations
+%%
+
+\usepackage{ifthen}
+
+\newboolean{sevenbytenbooksize}
+\newboolean{ipadsize}   % for the ipad, Duh.
+\newboolean{standard}
+
+\setboolean{sevenbytenbooksize}{true}
+\setboolean{ipadsize}{false}
+\setboolean{standard}{false}
+%
+%	Note how the iPad version differs from the booksize only in 
+% the size of the margins.
+%
+% Changing the following isn't hard but should be done with 
+% practice and care, making sure to get the margins right for a 
+% particular page size and printing format
+%
+%% Layout for printed book through Amazon CreateSpace, perfect bound,
+%% 7x10 ``journal'' size
+
+\ifthenelse{\boolean{ipadsize}}{\usepackage[paperheight=620pt,paperwidth=395pt, textheight=550pt,
+textwidth=345pt, includeheadfoot, hcentering=true]{geometry}}{}
+
+\ifthenelse{\boolean{sevenbytenbooksize}}{\usepackage[paperheight=10in,paperwidth=7in, textheight=550pt,
+textwidth=345pt, inner=1in,includeheadfoot]{geometry}}{}
+
+\ifthenelse{\boolean{standard}}{\usepackage{geometry}}{}
+%
+%\usepackage{APEX_format}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{ifthen}
+\usepackage{makeidx}
+\usepackage{changepage}
+\usepackage{ulem}
+\usepackage{xcolor}
+\usepackage[bookmarksnumbered,linkbordercolor=white]{hyperref}
+
+\usepackage{fancyhdr}
+
+
+\usepackage{APEX_format}
+
+%%
+% Fancy header declarations
+%%
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ \ \ \ {#1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ \ \ \  #1}}
+\fancyhf{}         %Clears all header and footer fields, in preparation.
+%\fancyheadoffset[LE,RO]{\marginparsep}
+%\addtolength{\headwidth}{\marginparwidth}
+\fancyhfoffset[LE,RO]{70pt}
+\fancyfoot[LE,RO]{\textbf{\thepage}} %Displays the page number in bold in the header,
+                       % to the left on even pages and to the right on odd pages.
+                                     
+\fancyhead[LE]{\nouppercase{\leftmark}}
+      %Displays the upper-level (chapter) information---
+      % as determined above---in non-upper case in the header, 
+      %to the right on even pages.
+\fancyhead[RO]{\rightmark}
+			%Displays the lower-level (section) information---as
+      % determined above---in the header, to the left on odd pages.
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+	%Underlines the header and footer. (Set to 0pt if not required).
+	
+
+%%
+%  Simple definitions for the MA 110 Text
+%%
+
+
+\newcommand{\noin}{\noindent}
+
+\newcommand{\ttmm}{$M$}
+\newcommand{\mm}{\texttt{M}}
+\newcommand{\ii}[1]{\ensuremath{I_{#1}}}
+\newcommand{\cour}[1]{\ensuremath{\text{\fontfamily{pcr}\selectfont {#1}}}} %courier font
+\newcommand{\tnr}[1]{\ensuremath{\text{\fontfamily{ptm}\selectfont {#1}}}} %times new roman font
+
+\newcommand{\ps}{\phantom{space}}
+\newcommand{\po}{\phantom{0}}
+\newcommand{\tq}{\textquotesingle}
+
+\newcommand{\boldeq}{\raisebox{1pt}{\rule{7pt}{1pt}}\hskip-7pt\raisebox{3pt}{\rule{7pt}{1pt}}}
+
+\definecolor{myblue}{rgb}{.7,.7,1}
+\definecolor{mygreen}{rgb}{.13,.7,.13}%creates a forest-like green for matlab comments
+%\definecolor{myred}{rgb}{1,.7,.7}
+\definecolor{myred}{rgb}{.6,.2,.8} %actually purple
+\definecolor{myyellow}{rgb}{.9,.9,0}
+
+
+
+
+
+
+
+	 
+	 
