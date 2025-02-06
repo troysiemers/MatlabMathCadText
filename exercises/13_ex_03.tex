@@ -1,0 +1,39 @@
+{Two blocks of masses $m_1$ and $m_2$ are connected by a string over a smooth pulley as shown.  Assume that $m_2>m_1$.  If the coefficient of friction is $\mu$ and $r=m_1/m_2$, then the masses will move at a constant speed ($m_2$ slides down the slope) if the angle $\theta$ is given by $\displaystyle \cos(\theta) = \frac{-\mu r + \sqrt{1-r^2+\mu^2}}{1+\mu^2}$.
+
+%\begin{center}
+%\includegraphics[scale=.3]{figures/matlab_ramp.png}
+%\end{center}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+
+\draw (0,0) node [shift={(.6,.2)},scale=1] {$\theta$} -- (2,0) -- (2,1.5) -- cycle; % angle is 36.86989765 degrees
+\draw (.4,0) arc (0:36.9:.4);
+\draw (2,1.5) -- ++(.3,.3) circle (.2);
+\draw [rotate=36.9](1,0) -- (1.5,0) -- (1.5,.5) -- node [pos=.5,rotate=36.9,scale=.7,above] {$m_2$} (1,.5)--cycle (1.5,.26) -- (2.9,.26);
+\draw (2.5,1.8) -- (2.5,.8);
+\draw (2.3,.8) -- (2.7,.8) -- node [pos=.5,scale=.7,right] {$m_1$} (2.7,.5) -- (2.3,.5) -- cycle;
+
+\end{tikzpicture}
+\end{center}
+
+\begin{itemize}
+\item[a.] Create a function for $\theta$ in terms of the other variables.
+\item[b.] Use the function in part a. to find $\theta$ if $m_1=5 kg, m_2=10 kg,$ and $\mu=0.6$.
+\item[c.] Use a solve block to find $\mu$ if $m_1=5 kg, m_2=10 kg,$ and $\theta=30^\circ$.
+\end{itemize}
+}
+{}
+%
+%
+%
+%%%old problem
+%%%{A sphere of mass $m_1$ strikes a stationary sphere of mass $m_2$, the direction of the blow making an angle $\alpha$ with the line of motion.  If the coefficient of restitution is $e$ (i.e. ``bounciness''), it can be shown that the striking sphere is deflected through an angle $\beta$ such that
+%%%\[
+%%%\tan \beta=\frac{m_2(1+e)\tan \alpha}{m_1-e\, m_2+(m_1 + m_2)\tan^2 \alpha}
+%%%\]
+%%%\begin{enumerate}
+%%%\item[a.] Create a function for $\beta$ in terms of the other variables.
+%%%\item[b.] Use the function in part a to find $\beta$ if $m_1=10 kg, m_2=5 kg, e=1$ and $\alpha=60^\circ$.  
+%%%\item[c.] Use a solve block to find $\alpha$ is $m_1=10 kg, m_2=5 kg, e=1$ and $\beta=30^\circ$.  
+%%%\end{enumerate}}
+%%%{}
